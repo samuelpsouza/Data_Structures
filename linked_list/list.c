@@ -20,3 +20,10 @@ void frees_a_list(List* list) {
         p = temp;
     }
 }
+
+List* insert_new_element(List* list, int info) {
+    List* new = (List*) malloc(sizeof(List));
+    new->info = info;
+    new->next = list;
+    return new;
+}
