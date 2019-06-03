@@ -29,7 +29,26 @@ List* insert_new_element(List* list, int info) {
 }
 
 List* remove_element(List* list, int value) {
+    List* prev = NULL;
+    List* next = list;
 
+    while(next != NULL && next->info != value) {
+        prev = next;
+        next = next->next;
+    }
+
+    if(next == NULL) {
+        return list;
+    }
+
+    if(prev == NULL) {
+        list = next->next;
+    } else {
+        prev->next = next->next;
+    }
+
+    free(next);
+    return list;
 }
 
 int is_empty(List* list) {
@@ -50,7 +69,14 @@ int size(List* list) {
 }
 
 List* get_element(List* list, int value) {
+    List* temp;
+    for(temp = list; temp != NULL; temp = temp->next){
+        if(temp->info == value){
+            return temp;
+        }
+    }
 
+    return NULL;
 }
 
 void to_string(List* list) {
