@@ -6,7 +6,7 @@ typedef struct list List;
 struct list {
     int info;
     struct list* next;
-}
+};
 
 List* create_empty_list (void) {
     return NULL;
@@ -26,4 +26,33 @@ List* insert_new_element(List* list, int info) {
     new->info = info;
     new->next = list;
     return new;
+}
+
+List* remove_element(List* list, int value) {
+
+}
+
+int is_empty(List* list) {
+    return (list == NULL) ;
+}
+
+int size(List* list) {
+    List* temp;
+    int counter = 0;
+
+    if(list != NULL){
+       for(temp = list; temp != NULL; temp = temp->next){
+           ++counter;
+       }
+    }
+
+    return counter;
+}
+
+List* get_element(List* list, int value) {
+
+}
+
+void to_string(List* list) {
+
 }
