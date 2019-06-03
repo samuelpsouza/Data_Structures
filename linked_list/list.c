@@ -54,5 +54,8 @@ List* get_element(List* list, int value) {
 }
 
 void to_string(List* list) {
-
+    List* temp;
+    for(temp = list; temp != NULL; temp = temp->next){
+        printf("Info: %d\n", temp->info);
+    }
 }
