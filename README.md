@@ -29,10 +29,11 @@ O significado de FIFO é ***primeiro a entrar, primeiro a sair***. Isso signifca
 ```java
 
 public interface Queue<T> {
-    public void enqueue(T t);
+    public void enqueue(T t) throws FullQueueException;
     public T dequeue() throws EmptyQueueException;
     public int size();
     public boolean isEmpty();
+    public boolean isFull();
     public T front();
 }
 
