@@ -10,7 +10,7 @@ Alguns autores variam nas operações adicionais da pilha. Por exemplo, (Goodric
 
 ```java
 
-public inteface Stack<T> {
+public interface Stack<T> {
     public void push(T t);
     public T pop() throws EmptyStackException;
     public int size();
@@ -22,3 +22,18 @@ public inteface Stack<T> {
 
 ## Queue (Fila)
 
+A fila também é uma estrutura de dados bem conhecida (Celes et al, 2016). Sua característica é utilizar a estratégia FIFO, similar ao nosso conceito de fila de um caixa, por exemplo. Ela consiste de um conteiner de objetos (Goodrich et al, 2009).
+
+O significado de FIFO é ***primeiro a entrar, primeiro a sair***. Isso signifca que só podemos inserir (***enqueue***) um elemento no fim da fila. E para retirar (***dequeue***), retirar, o elementro deve está no início da fila.
+
+```java
+
+public interface Queue<T> {
+    public void enqueue(T t);
+    public T dequeue() throws EmptyQueueException;
+    public int size();
+    public boolean isEmpty();
+    public T front();
+}
+
+```
