@@ -1,13 +1,40 @@
 package pilha;
 
-public interface Pilha<T> {
-	public void empilha(T t);
+public class Pilha {
+	private Integer[] elements = null;
+	private int index = -1;
 
-	public T desempilha() throws PilhaVaziaException;
+	public Pilha(int size) {
+		elements = new Integer[size];
+	}
 
-	public int tamanho();
+	public void empilha(final Integer t) {
+		index = index + 1;
+		elements[index] = t;
+	}
 
-	public boolean estaVazia();
+	public Integer desempilha() throws PilhaVaziaException {
+		if (estaVazia()) {
+			throw new IllegalStateException("Pilha is empty");
+		}
 
-	public T topo();
+		final Integer element = elements[index];
+		elements[index] = null;
+		index = index - 1;
+
+		return element;
+	}
+
+	public int tamanho() {
+		return index + 1;
+	}
+
+	public boolean estaVazia() {
+		return this.index < 0;
+	}
+
+	public Integer topo() {
+		return elements[index];
+	}
+
 }
