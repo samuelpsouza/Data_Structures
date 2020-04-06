@@ -1,31 +1,32 @@
+package fila;
 
-public class QueueImpl implements Queue<Integer> {
+public class FilaImpl implements Fila<Integer> {
 	private Integer[] elements = null;
 	private int front = 0;
 	private int end = 0;
-	
-	public QueueImpl(int size) {
+
+	public FilaImpl(int size) {
 		elements = new Integer[size];
 	}
 
 	@Override
-	public void enqueue(Integer t) throws FullQueueException {
-		if(isFull()) {
-			throw new FullQueueException();
+	public void enfileira(Integer t) throws FilaCheiaException {
+		if (estaCheia()) {
+			throw new FilaCheiaException();
 		}
-		
+
 		elements[end] = t;
-		end = (end +1) % elements.length;
-		
+		end = (end + 1) % elements.length;
+
 	}
 
 	@Override
-	public Integer dequeue() throws EmptyQueueException {
-		
-		if(isEmpty()) {
-			throw new EmptyQueueException();
+	public Integer desenfileira() throws FilaVaziaException {
+
+		if (estaVazia()) {
+			throw new FilaVaziaException();
 		}
-		
+
 		final Integer element = elements[front];
 		elements[front] = null;
 		front = (front + 1) % elements.length;
@@ -33,24 +34,24 @@ public class QueueImpl implements Queue<Integer> {
 	}
 
 	@Override
-	public int size() {
+	public int tamanho() {
 		int n = elements.length;
 		return ((n - front + end) % n);
 	}
 
 	@Override
-	public boolean isEmpty() {
+	public boolean estaVazia() {
 		return front == end;
 	}
 
 	@Override
-	public boolean isFull() {
+	public boolean estaCheia() {
 		int n = elements.length;
 		return ((n - front + end) % n) >= n;
 	}
 
 	@Override
-	public Integer front() {
+	public Integer frente() {
 		return elements[front];
 	}
 }

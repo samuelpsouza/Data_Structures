@@ -1,43 +1,44 @@
+package pilha;
 
-public class StackImpl implements Stack<Integer> {
+public class PilhaImpl implements Pilha<Integer> {
 	private Integer[] elements = null;
 	private int index = -1;
-	
-	public StackImpl(int size) {
+
+	public PilhaImpl(int size) {
 		elements = new Integer[size];
 	}
-	
+
 	@Override
-	public void push(Integer t) {
+	public void empilha(final Integer t) {
 		index = index + 1;
 		elements[index] = t;
 	}
 
 	@Override
-	public Integer pop() throws EmptyStackException {
-		if(isEmpty()) {
-			throw new IllegalStateException("Stack is empty");
+	public Integer desempilha() throws PilhaVaziaException {
+		if (estaVazia()) {
+			throw new IllegalStateException("Pilha is empty");
 		}
-		
+
 		final Integer element = elements[index];
 		elements[index] = null;
 		index = index - 1;
-		
+
 		return element;
 	}
 
 	@Override
-	public int size() {
+	public int tamanho() {
 		return index + 1;
 	}
 
 	@Override
-	public boolean isEmpty() {
+	public boolean estaVazia() {
 		return this.index < 0;
 	}
 
 	@Override
-	public Integer top() {
+	public Integer topo() {
 		return elements[index];
 	}
 
